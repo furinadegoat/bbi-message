@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Random message ✨</title>
+<style>
+  body {display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; font-family:sans-serif; background:#fefae0;}
+  button {padding:10px 20px; border:none; border-radius:8px; background:#ffb5a7; color:white; cursor:pointer;}
+  p {margin-top:20px; font-size:18px;}
+</style>
+</head>
+<body>
+  <h2>Click để nhận message nho nhỏ 💌</h2>
+  <button onclick="showMsg()">Nhận</button>
+  <p id="msg"></p>
+  <script>
+    const msgs = [
+      "Chúc c ngày mới nhiều năng lượng ☀️",
+      "Nhớ giữ ấm nha, trời hơi lạnh đó 😌",
+      "Bug nào cũng fix được, chỉ bug nhớ c là vô hạn 😳",
+      "Nếu c đang cười khi đọc dòng này thì coi như quà thành công 😆"
+    ];
+    function showMsg(){
+      const random = Math.floor(Math.random() * msgs.length);
+      document.getElementById("msg").textContent = msgs[random];
+    }
+  </script>
+</body>
+</html>
