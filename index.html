@@ -1,197 +1,199 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>He Vuong Platform</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Binh Lam – Portfolio</title>
+  <meta name="description" content="Binh Lam – Developer, Competitive Programmer, CS Student" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --card: #141414;
+      --text: #e5e5e5;
+      --muted: #9ca3af;
+      --accent: #6366f1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:'JetBrains Mono',monospace;
-  background:#05080f;
-  color:#00ffcc;
-  overflow-x:hidden;
-}
-canvas{position:fixed;inset:0;z-index:0}
-.app{position:relative;z-index:2;max-width:1000px;margin:auto;padding:80px 20px}
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
 
-h1{text-align:center;font-size:52px;margin-bottom:10px}
-.subtitle{text-align:center;opacity:.6;margin-bottom:50px}
+    /* HERO */
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 16px;
+    }
+    .hero span { color: var(--accent); }
+    .hero p {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    .hero .actions {
+      margin-top: 32px;
+      display: flex;
+      gap: 16px;
+    }
 
-nav{
-  display:flex;justify-content:center;gap:20px;
-  margin-bottom:50px;flex-wrap:wrap;
-}
-nav button{
-  background:none;border:1px solid rgba(0,255,204,.4);
-  color:#00ffcc;padding:8px 14px;border-radius:6px;
-  cursor:pointer;
-}
-nav button:hover{background:rgba(0,255,204,.1)}
+    .btn {
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+    }
+    .btn:hover { transform: translateY(-2px); }
 
-section{
-  display:none;
-  background:rgba(0,0,0,.65);
-  border:1px solid rgba(0,255,204,.25);
-  border-radius:12px;
-  padding:30px;
-}
-section.active{display:block}
+    /* SECTIONS */
+    section { margin-top: 120px; }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 32px;
+    }
 
-.card{
-  border-left:3px solid rgba(0,255,204,.5);
-  padding-left:16px;margin:10px 0;
-}
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+    }
+    .about p { color: var(--muted); }
 
-input,textarea{
-  width:100%;background:#000;border:1px solid #00ffcc;
-  color:#00ffcc;padding:8px;font-family:inherit;
-}
-textarea{resize:vertical}
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #1f1f1f;
+    }
+    .card ul { list-style: none; }
+    .card li { margin-bottom: 10px; }
 
-footer{text-align:center;margin-top:60px;opacity:.5}
-</style>
+    /* PROJECTS */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .project {
+      transition: transform 0.2s ease;
+    }
+    .project:hover { transform: translateY(-6px); }
+    .project h3 { margin-bottom: 8px; }
+    .project p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+    .tags span {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-right: 10px;
+    }
+
+    /* CONTACT */
+    .contact p { color: var(--muted); margin-bottom: 20px; }
+    .links a {
+      margin-right: 20px;
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 120px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .about { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
+  <main class="container">
 
-<canvas id="matrix"></canvas>
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Hi, I'm <span>Binh Lam</span></h1>
+      <p>Developer · Competitive Programmer · CS Student. I like building efficient systems and solving hard problems.</p>
+      <div class="actions">
+        <a href="#projects" class="btn primary">View Projects</a>
+        <a href="#contact" class="btn">Contact</a>
+      </div>
+    </section>
 
-<div class="app">
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div>
+        <h2>About Me</h2>
+        <p>
+          I focus on algorithms, performance-oriented C++ code, and clear problem solving. I have a strong background in competitive programming and I'm currently exploring AI and system design.
+        </p>
+      </div>
+      <div class="card">
+        <ul>
+          <li>🎓 Computer Science Student</li>
+          <li>🥉 IOI Bronze Medalist</li>
+          <li>💻 C++, Python, JavaScript</li>
+          <li>⚽ Barcelona fan</li>
+        </ul>
+      </div>
+    </section>
 
-<h1>LAM AN BINH</h1>
-<p class="subtitle">personal cyber platform · system online</p>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="projects">
+        <div class="card project">
+          <h3>Algorithmic Optimization</h3>
+          <p>Optimized large-scale data processing using segment trees and matrix techniques to handle 2e5 operations efficiently.</p>
+          <div class="tags"><span>C++</span><span>Data Structures</span></div>
+        </div>
+        <div class="card project">
+          <h3>Graph Transformation</h3>
+          <p>Converted undirected graphs into strongly connected directed graphs under strict constraints.</p>
+          <div class="tags"><span>C++</span><span>Graph Theory</span></div>
+        </div>
+        <div class="card project">
+          <h3>Laser Simulation</h3>
+          <p>Built a grid-based laser simulation with loop detection and exit tracking.</p>
+          <div class="tags"><span>C++</span><span>Simulation</span></div>
+        </div>
+      </div>
+    </section>
 
-<nav>
-<button onclick="show('dashboard')">Dashboard</button>
-<button onclick="show('quotes')">Quotes</button>
-<button onclick="show('board')">Message Board</button>
-<button onclick="show('playground')">Playground</button>
-<button onclick="show('secret')">Secret</button>
-</nav>
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <h2>Get In Touch</h2>
+      <p>If you want to discuss tech, algorithms, or opportunities, feel free to reach out.</p>
+      <div class="links">
+        <a href="mailto:your@email.com">Email</a>
+        <a href="https://github.com/yourname">GitHub</a>
+        <a href="https://linkedin.com/in/yourname">LinkedIn</a>
+      </div>
+    </section>
 
-<section id="dashboard" class="active">
-<h2>🧠 SYSTEM DASHBOARD</h2>
-<div class="card" id="sysinfo"></div>
-</section>
+    <footer>
+      © 2026 Binh Lam. Frontend only.
+    </footer>
 
-<section id="quotes">
-<h2>💭 QUOTE ENGINE</h2>
-<div class="card" id="quoteBox"></div>
-<button onclick="newQuote()">New Quote</button>
-</section>
-
-<section id="board">
-<h2>💬 MESSAGE BOARD</h2>
-<textarea id="msg" placeholder="Leave a message..."></textarea>
-<button onclick="postMsg()">Post</button>
-<div id="messages"></div>
-</section>
-
-<section id="playground">
-<h2>🕹 LOGIC PLAYGROUND</h2>
-<p>Click to generate random array and sort it.</p>
-<button onclick="gen()">Generate</button>
-<button onclick="sortArr()">Sort</button>
-<div class="card" id="arrayView"></div>
-</section>
-
-<section id="secret">
-<h2>🔐 SECRET ZONE</h2>
-<div class="card" id="secretBox">Locked.</div>
-</section>
-
-<footer>© 2026 · He Vuong Platform</footer>
-
-</div>
-
-<script>
-/* MATRIX */
-const c=document.getElementById("matrix"),ctx=c.getContext("2d");
-function resize(){c.width=innerWidth;c.height=innerHeight}
-resize();addEventListener("resize",resize);
-const chars="01",size=14;
-let cols=Math.floor(c.width/size),drops=Array(cols).fill(1);
-(function loop(){
-  ctx.fillStyle="rgba(0,0,0,0.08)";
-  ctx.fillRect(0,0,c.width,c.height);
-  ctx.fillStyle="#00ffcc";
-  ctx.font=size+"px monospace";
-  for(let i=0;i<drops.length;i++){
-    ctx.fillText(chars[Math.random()*2|0],i*size,drops[i]*size);
-    if(drops[i]*size>c.height&&Math.random()>0.975)drops[i]=0;
-    drops[i]++;
-  }
-  requestAnimationFrame(loop);
-})();
-
-/* NAV */
-function show(id){
-  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
-
-/* USER SYSTEM */
-if(!localStorage.uid){
-  localStorage.uid="USER_"+Math.random().toString(16).slice(2,6).toUpperCase();
-  localStorage.visits=1;
-}else localStorage.visits++;
-
-const boot=Date.now();
-setInterval(()=>{
-  sysinfo.innerText=
-`id: ${localStorage.uid}
-visits: ${localStorage.visits}
-uptime: ${((Date.now()-boot)/1000)|0}s`;
-},1000);
-
-/* QUOTES */
-const quotes=[
-"encrypted mind · free soul",
-"tri thức không bao giờ phản bội",
-"sự im lặng là một dạng quyền lực"
-];
-function newQuote(){
-  quoteBox.innerText=quotes[Math.random()*quotes.length|0];
-}
-newQuote();
-
-/* MESSAGE BOARD */
-const msgs=JSON.parse(localStorage.msgs||"[]");
-function renderMsg(){
-  messages.innerHTML=msgs.map(m=>`<div class="card">${m}</div>`).join("");
-}
-function postMsg(){
-  if(msg.value.trim()){
-    msgs.unshift(msg.value.trim());
-    localStorage.msgs=JSON.stringify(msgs.slice(0,20));
-    msg.value="";renderMsg();
-  }
-}
-renderMsg();
-
-/* PLAYGROUND */
-let arr=[];
-function gen(){
-  arr=Array.from({length:8},()=>Math.floor(Math.random()*100));
-  arrayView.innerText=arr.join(" ");
-}
-function sortArr(){
-  arr.sort((a,b)=>a-b);
-  arrayView.innerText=arr.join(" ");
-}
-
-/* SECRET */
-let clicks=0;
-document.addEventListener("keydown",e=>{
-  if(e.key==="h") clicks++;
-  if(clicks>=5){
-    secretBox.innerText="ROOT ACCESS GRANTED.";
-  }
-});
-</script>
-
+  </main>
 </body>
 </html>
